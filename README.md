@@ -87,6 +87,11 @@ $ npm run test:cov
       "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMxOTUxNzksImV4cCI6MTY1MzE5NjA3OX0.Aw1DbftPRXIS-Xc9Q8t2qWWfVuTe0ta_S3hMPee0ab8"
     }
     ```
+- 13:08 https://docs.nestjs.com/techniques/configuration
+- 14:04 Lunch Break
+- 14:23 Resume
+
+
 
 ## TODO:
 - RegEx (Special || Number) => /(?:(?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/

@@ -14,8 +14,8 @@ export class AuthController {
   }
 
   @Post('login')
-  loginLocal() {
-    this.authService.loginLocal()
+  loginLocal(@Body() dto: AuthDto): Promise<Token> {
+    return this.authService.loginLocal(dto);
   }
 
   @Post('password-reset')
