@@ -66,6 +66,31 @@ $ npm run test:cov
 - 09:53 issue with ip address of PG on PgAdmin
   - Resolution: https://www.youtube.com/watch?v=3nIc5GNmh98 
   - $ docker inspect 207bb054e117
+- 10:20 Setup Prism/client
+- 10:52 Coffee refill (2nd)
+- 11:54 https://docs.nestjs.com/security/authentication#jwt-functionality
+- 12:32 https://stackoverflow.com/questions/71219246/jsonwebtokenerror-jwt-must-be-provided-nest-js
+- 12:45  Error: listen EADDRINUSE: address already in use :::8080 
+  - Resolution: $ npx kill-port 8080
+- 12:57 Register a user is now working, with token returns 
+    ```
+    ### POST local/register: 
+    POST http://localhost:8080/auth/register
+    Content-Type: application/json
+
+    {
+      "email": "email03@gmail.com",
+      "password": "P@ssword!"
+    }
+
+    {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMxOTUxNzksImV4cCI6MTY1MzE5NjA3OX0.Aw1DbftPRXIS-Xc9Q8t2qWWfVuTe0ta_S3hMPee0ab8"
+    }
+    ```
+
+## TODO:
+- RegEx (Special || Number) => /(?:(?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
+
 
 ## Support
 

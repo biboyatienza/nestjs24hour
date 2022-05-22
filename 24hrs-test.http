@@ -1,2 +1,15 @@
+
+### POST local/register: 
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "email": "email03@gmail.com",
+  "password": "P@ssword!"
+}
+
+
+
+### Pexel API Call:
 GET https://api.pexels.com/v1/search?query=people
 Authorization: 563492ad6f9170000100000143b1404b9f7e475d8c8831687a2e36a9
