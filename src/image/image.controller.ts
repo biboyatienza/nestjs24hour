@@ -46,17 +46,13 @@ export class ImageController {
   }
 
 
-  @Post(':id')
+  @Post()
   @HttpCode(HttpStatus.OK)
   async postImage(
-    @Param('id') id: string,
     @GetCurrentUserDecorator('sub') userId: number, 
     dto: PostImageDto
     ): Promise<boolean> {
-    const imageId = Number(id);
-    if(isNaN(imageId)) throw new ForbiddenException('Invalid image id.');
     return this.imageService.postImage(new PostImageSeriveDto(
-      imageId, 
       userId,
       isNaN(dto.owner) ? userId : dto.owner, 
       dto.uri));

@@ -1,8 +1,12 @@
 # 24 Hour NestJS API Challenge / Project
 
 ## Description
+The goal of this test is to create a consumable RESTful API for storing and retrieving
+images.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Code Repository
+- https://github.com/biboyatienza/nestjs24hour
+
 
 ## Installation
 
@@ -23,18 +27,211 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Tools
+- Visual Studio Code
+- Git/Github
+- docker for PostgreSQL
+- Prisma
+- NestJs.com
+- SendGrid
 
-```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+## Testing
+I am using REST Client v0.24.6 by Huachao Mao, a VS Code extension.
 
-# test coverage
-$ npm run test:cov
+- 24hrs-test.http
+- test.http
+
+
+
+### 05:30 images/id - with valid token:
 ```
+GET  http://localhost:8080/images/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6ImJpYm95YXRpZW56YUBnbWFpbC5jb20iLCJpYXQiOjE2NTMyNTQyOTAsImV4cCI6MTY1MzI1NTE5MH0.NprJID1OKJNpC164RhKqBZ8-Q2Vzekom_i8xBlp6Plg
+```
+
+### Result: 
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 175
+ETag: W/"af-LkoyG2b28jqWgW3BhFpmoVeoXkQ"
+Date: Sun, 22 May 2022 21:30:18 GMT
+Connection: close
+
+{
+  "id": 1,
+  "hits": 2,
+  "uri": "https://images.pexels.com/photos/2050994/pexels-photo-2050994.jpeg?auto=compress\\u0026cs=tinysrgb\\u0026dpr=1\\u0026fit=crop\\u0026h=200\\u0026w=280"
+}
+```
+
+
+### 05:29 images/id - Calling with invalid token: 
+```
+GET  http://localhost:8080/images/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMyNDkyNDcsImV4cCI6MTY1MzI1MDE0N30.xzdWENaOdWhnsXr1ZMfay-aApHoBve88OOiUJGpUzAg
+```
+### Result: 
+```
+HTTP/1.1 401 Unauthorized
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 43
+ETag: W/"2b-hGShxOkieaAVDloBubJVM+h58D8"
+Date: Sun, 22 May 2022 21:27:59 GMT
+Connection: close
+
+{
+  "statusCode": 401,
+  "message": "Unauthorized"
+}
+```
+
+### 05:22 PASSWORD RESET" 
+```
+POST http://localhost:8080/auth/password-reset
+Content-Type: application/json
+
+{
+  "email": "baliwme2014@gmail.com"
+}
+```
+### Result: also with send an email to the given email address
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/html; charset=utf-8
+Content-Length: 4
+ETag: W/"4-X/5TO4MPCKAyY0ipFgr6/IraRNs"
+Date: Sun, 22 May 2022 21:22:05 GMT
+Connection: close
+
+true
+```
+
+
+### 05:20 LOGIN: Using and password should a token 
+```
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "biboyatienza@gmail.com",
+  "password": "Pass@word123!"
+}
+```
+### Result:
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 203
+ETag: W/"cb-OdAnKT0+ivgjzJ/0oyZjDLrE3/4"
+Date: Sun, 22 May 2022 21:18:10 GMT
+Connection: close
+
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6ImJpYm95YXRpZW56YUBnbWFpbC5jb20iLCJpYXQiOjE2NTMyNTQyOTAsImV4cCI6MTY1MzI1NTE5MH0.NprJID1OKJNpC164RhKqBZ8-Q2Vzekom_i8xBlp6Plg"
+}
+```
+
+
+
+### 05:07 REGISTER: A valid user and password should return a token:
+```
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "email": "biboyatienza@gmail.com",
+  "password": "Pass@word123!",
+  "role": "ADMIN"
+}
+```
+
+### Result:
+```
+HTTP/1.1 201 Created
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 203
+ETag: W/"cb-Cg1WSML44nLlEFcRkBX7Fx6+AEU"
+Date: Sun, 22 May 2022 21:14:44 GMT
+Connection: close
+
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6ImJpYm95YXRpZW56YUBnbWFpbC5jb20iLCJpYXQiOjE2NTMyNTQwODQsImV4cCI6MTY1MzI1NDk4NH0.DCTJpXrUeE5-M8EGOFeETrfmxImTXvjV5a09gkub5hA"
+}
+```
+
+### 05:07 REGISTER: Invalid password should return error
+```
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "email": "adm3@gmail.com",
+  "password": "ssw1111",
+  "role": "ADMIN"
+}
+
+```
+
+### Result: 
+  ```
+  HTTP/1.1 400 Bad Request
+  X-Powered-By: Express
+  Content-Type: application/json; charset=utf-8
+  Content-Length: 128
+  ETag: W/"80-V8CxVySWe4UyN5QeqY87MqJ2kJE"
+  Date: Sun, 22 May 2022 21:11:01 GMT
+  Connection: close
+
+  {
+    "statusCode": 400,
+    "message": [
+      "Password too weak",
+      "password must be longer than or equal to 8 characters"
+    ],
+    "error": "Bad Request"
+  }
+  ```
+
+### 05:07 REGISTER: An Existing User should return error
+```
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "email": "admin1@gmail.com",
+  "password": "P@ssword!1",
+  "role": "ADMIN"
+}
+```
+### Result:
+```
+  HTTP/1.1 403 Forbidden
+  X-Powered-By: Express
+  Content-Type: application/json; charset=utf-8
+  Content-Length: 74
+  ETag: W/"4a-GHBZjFPSwzIT1kpOZwyLwrJWdVc"
+  Date: Sun, 22 May 2022 21:05:33 GMT
+  Connection: close
+
+  {
+    "statusCode": 403,
+    "message": "Email already registed.",
+    "error": "Forbidden"
+  }
+```
+
+
+
+
 
 ## References
 - https://www.prisma.io/docs/concepts/components/prisma-schema/data-model
@@ -90,9 +287,5 @@ $ npm run test:cov
 - 02:56 https://cloudinary.com/console/c-dc77ffa1444252c90516193ea838a7/getting-started
 - 02:59 wiring cloudinary
 - 04:17 Brain is now working properly, sleepy :(
-  
-
-## TODO:
-- RegEx (Special || Number) => /(?:(?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
-- configService.get<string>('TOKEN_SECRET')
+- 04:22 Just fixing this ReadMe  
 

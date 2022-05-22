@@ -1,0 +1,57 @@
+### 05:21
+
+
+
+
+
+POST http://localhost:8080/images/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6ImJpYm95YXRpZW56YUBnbWFpbC5jb20iLCJpYXQiOjE2NTMyNTUzNjIsImV4cCI6MTY1MzI1NjI2Mn0.l2idS8w55eeq6mV4yeY7EeC_z6SgqlqDUnMcgzYtAJY
+
+{
+  "uri": "https://images.pexels.com/photos/834894/pexels-photo-834894.jpeg?auto=compress\u0026cs=tinysrgb\u0026dpr=1\u0026fit=crop\u0026h=200\u0026w=280",
+  "owner": 6
+
+}
+
+###
+PATCH  http://localhost:8080/images/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6ImJpYm95YXRpZW56YUBnbWFpbC5jb20iLCJpYXQiOjE2NTMyNTUzNjIsImV4cCI6MTY1MzI1NjI2Mn0.l2idS8w55eeq6mV4yeY7EeC_z6SgqlqDUnMcgzYtAJY
+
+{
+  "hits": 3,
+  "uri": "https://images.pexels.com/photos/834894/pexels-photo-834894.jpeg?auto=compress\u0026cs=tinysrgb\u0026dpr=1\u0026fit=crop\u0026h=200\u0026w=280"
+}
+
+
+
+### POST auth/password-reset: thru SENDGRID 
+POST http://localhost:8080/auth/password-reset
+Content-Type: application/json
+
+{
+  "email": "baliwme2014@gmail.com"
+}
+
+###
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "biboyatienza@gmail.com",
+  "password": "Pass@word123!"
+}
+
+
+###
+## POST register: An Existing User should return error
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "email": "biboyatienza@gmail.com",
+  "password": "Pass@word123!",
+  "role": "ADMIN"
+}
+
