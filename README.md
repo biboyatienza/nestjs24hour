@@ -90,7 +90,9 @@ $ npm run test:cov
 - 13:08 https://docs.nestjs.com/techniques/configuration
 - 14:04 Lunch Break
 - 14:23 Resume
-
+- 15:58 Working Password reset & new route, just need other service for email
+- 16:38 Applied enum RBAC
+ 
 
 
 ## TODO:

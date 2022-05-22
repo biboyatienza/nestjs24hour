@@ -37,6 +37,16 @@ Content-Type: application/json
   "password": "P@ssword!"
 }
 
+### POST local/register: 
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "email": "admin1@gmail.com",
+  "password": "P@ssword!1",
+  "role": "ADMIN"
+}
+
 
 ### POST local/register: 
 POST http://localhost:8080/auth/register
@@ -44,7 +54,8 @@ Content-Type: application/json
 
 {
   "email": "email03@gmail.com",
-  "password": "P@ssword!"
+  "password": "P@ssword!",
+  "role": "USER"
 }
 
 
