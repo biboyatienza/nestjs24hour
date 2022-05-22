@@ -1,3 +1,32 @@
+### POST auth/login: 15:54, using new password 
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "email03@gmail.com",
+  "password": "Password1!"
+}
+
+### POST auth/password-new: 15:48 
+POST http://localhost:8080/auth/password-new
+Content-Type: application/json
+
+{
+  "password_reset_token": "$2b$10$IOeoce5ApYJxDmm/sDOaF.Uj83oUFzAXfpfxuMgjBgRuCbP1eOkKK",
+  "new_password": "Password1!"
+}
+
+
+
+### POST local/login: 15:44 
+POST http://localhost:8080/auth/password-reset
+Content-Type: application/json
+
+{
+  "email": "email03@gmail.com"
+}
+
+
 
 ### POST local/login: 13:53 
 POST http://localhost:8080/auth/login

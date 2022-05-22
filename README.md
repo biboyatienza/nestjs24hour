@@ -95,6 +95,7 @@ $ npm run test:cov
 
 ## TODO:
 - RegEx (Special || Number) => /(?:(?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
+- configService.get<string>('TOKEN_SECRET')
 
 
 ## Support

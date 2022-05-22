@@ -1,11 +1,10 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { AuthDto } from './dtos';
 import * as bcrypt from 'bcrypt';
 import { Token } from './types';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { use } from 'passport';
+import { LoginDto, PasswordNewDto, PasswordResetDto, RegisterDto } from './dtos';
 
 
 @Injectable()
@@ -34,7 +33,7 @@ export class AuthService {
     };
  }
 
-  async registerLocal(dto: AuthDto): Promise<Token> {
+  async registerLocal(dto: RegisterDto): Promise<Token> {
 
     const userExists = await this.prismaService.user.findUnique({
       where: {
@@ -56,7 +55,7 @@ export class AuthService {
     return token;
   }
 
-  async loginLocal(dto: AuthDto): Promise<Token> {
+  async loginLocal(dto: LoginDto): Promise<Token> {
    const user = await this.prismaService.user.findUnique({
      where: {
        email: dto.email
@@ -72,5 +71,52 @@ export class AuthService {
    return token;
 
   }
-  passwordResetLocal() {}  
+
+  async passwordResetLocal(dto: PasswordResetDto): Promise<boolean> {
+    const userFound = await this.prismaService.user.findUnique({
+      where: {
+        email: dto.email
+      },
+    });
+
+    if (!userFound) throw new ForbiddenException('Email does not exists.');
+
+    const hashPasswordResetToken = await this.hashData(userFound.passwordHash);
+    await this.prismaService.user.updateMany({
+      where: {
+        id: userFound.id
+      },
+      data: {
+        passwordResetToken: hashPasswordResetToken,
+        updatedAt: new Date()
+      },
+    });
+    return true;
+  }
+  
+async passwordNewLocal(dto: PasswordNewDto): Promise<Token> {
+  const userFound = await this.prismaService.user.findFirst({
+    where: {
+      passwordResetToken : dto.password_reset_token
+    }
+  });
+
+  if (!userFound) throw new ForbiddenException('Invalid password reset token.');
+
+  const hashNewPassword = await this.hashData(dto.new_password); 
+
+  await this.prismaService.user.updateMany({
+    where: {
+      id: userFound.id
+    },
+    data: {
+      passwordHash: hashNewPassword,
+      passwordResetToken: '',
+      updatedAt: new Date()
+    },
+  });
+
+  const token = await this.getToken(userFound.id, userFound.email);
+  return token;
+ }
 }
