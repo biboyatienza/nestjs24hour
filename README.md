@@ -58,6 +58,11 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## References
+- https://www.prisma.io/docs/concepts/components/prisma-schema/data-model
+- https://www.pexels.com/api/documentation/#authorization
+- pxls => 563492ad6f9170000100000143b1404b9f7e475d8c8831687a2e36a9
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
