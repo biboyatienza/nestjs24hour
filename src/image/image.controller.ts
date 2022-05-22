@@ -18,8 +18,8 @@ export class ImageController {
     @GetCurrentUserDecorator('sub') userId: number 
     ): string {
     const max_limit = limit >= 10 ? 10 : limit;
-
-    return "PROTECTED images/ route, login is required to see this." + max_limit.toString() + ' user => ' + userId.toString();
+    const r = this.imageService.getImages(max_limit, userId);
+    return "PROTECTED images/ route, login is required to see this." + max_limit.toString() + ' user => ' + userId.toString() + 'RoLE: ';
   }
 
   @Get(':id')
@@ -55,7 +55,11 @@ export class ImageController {
     ): Promise<boolean> {
     const imageId = Number(id);
     if(isNaN(imageId)) throw new ForbiddenException('Invalid image id.');
-    return this.imageService.postImage(new PostImageSeriveDto(imageId, userId, dto.uri));
+    return this.imageService.postImage(new PostImageSeriveDto(
+      imageId, 
+      userId,
+      isNaN(dto.owner) ? userId : dto.owner, 
+      dto.uri));
   }
 
   @Delete(':id')

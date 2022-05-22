@@ -1,26 +1,48 @@
+import { HttpService } from '@nestjs/axios';
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { Image } from '@prisma/client';
+import { Image, User } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { PatchImageDto, PatchImageSeriveDto, PostImageSeriveDto } from './dtos';
+import { PatchImageSeriveDto, PostImageSeriveDto } from './dtos';
 import { SingleImageType } from './types/single-image.type';
 
 @Injectable()
 export class ImageService {
-  constructor(private readonly prismaService: PrismaService){}
+  constructor(private readonly prismaService: PrismaService, private readonly httpService: HttpService){}
+
+  private async getUserRole(userId: number): Promise<string>{
+    const currentUser = await this.prismaService.user.findFirst({
+      where: {
+        id: userId
+      }
+    });
+    return currentUser.role === 'ADMIN' ? 'ADMIN' : 'USER'; 
+  }
 
   private async findImageByIdAndUserId(imageId: number, userId: number): Promise<Image>{
-    const imageExists = await this.prismaService.image.findFirst({
+    const role = await this.getUserRole(userId);
+
+    if(role==='ADMIN')
+      return await this.prismaService.image.findFirst({
+        where: {
+            id: imageId
+        }
+      });
+      
+    return await this.prismaService.image.findFirst({
       where: {
         AND: [
           { id: imageId },
-          { creatorId: userId } //TODO:
+          { creatorId: userId },
+          { softDeletedAt: null }
         ] 
       }
     });
-    return imageExists;
   }
 
-  async getImages(max_limit: number): Promise<any>{}
+  async getImages(max_limit: number, userId: number): Promise<string>{
+    const role = await this.getUserRole(userId);
+    return role;
+  }
 
   async getImage(imageId: number, userId: number): Promise<SingleImageType>{
     const imageExists = await this.findImageByIdAndUserId(imageId, userId);
@@ -63,14 +85,14 @@ export class ImageService {
   async postImage(dto: PostImageSeriveDto): Promise<boolean>{
     const userExists = await this.prismaService.user.findFirst({
       where: {
-        id: dto.userdId
+        id: dto.owner
       }
     });
     if(!userExists) throw new ForbiddenException ('User/Owner not exists.');
 
     await this.prismaService.image.create({
       data: {
-        creatorId: dto.userdId,
+        creatorId: dto.owner,
         uri: dto.uri
       }      
     });

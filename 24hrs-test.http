@@ -1,8 +1,11 @@
-### GET images/:id: 22:06, Show image with :id 
-GET  http://localhost:8080/images/19
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMyMjg0NzQsImV4cCI6MTY1MzIyOTM3NH0.4oFPC4pHqPJ0wcIoGrVuDv-VDPrbMPOs2lZYbppEbX8
+### Pexel API Call: 03:48
+GET https://api.pexels.com/v1/search?query=people
+Authorization: 563492ad6f9170000100000143b1404b9f7e475d8c8831687a2e36a9
 
+### GET images/:id: 22:06, Show image with :id 
+GET  http://localhost:8080/images?limit=19
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMyNDkyNDcsImV4cCI6MTY1MzI1MDE0N30.xzdWENaOdWhnsXr1ZMfay-aApHoBve88OOiUJGpUzAg
 
 ### Pexel API Call: 21:56
 GET https://api.pexels.com/v1/search?query=people
