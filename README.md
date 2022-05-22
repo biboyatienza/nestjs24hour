@@ -94,6 +94,18 @@ $ npm run test:cov
 - 16:38 Applied enum RBAC
 - 16:57 Create a protected route => http://localhost:8080/auth/
   - Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMyMDk3MzksImV4cCI6MTY1MzIxMDYzOX0.Hyi8vGiJJK8SqAj9UVHqMwoxFGWTn9J8Q_s8td0nz8A
+- 17:07 Apply event for out emailing => https://docs.nestjs.com/techniques/events
+- 17:36 https://app.sendgrid.com/
+- 17:41 https://progressivecoder.com/how-to-send-emails-using-nestjs-sendgrid-api/
+- 17:48 sg =>  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
+- 18:39 Setting up SendGrif verifications :(
+- 18:41 Sendgrid test OK!
+- 19:08 Dinner Break
+- 20:09 Resume, Sendgrid not ending email :(
+  - https://jsonlint.com/
+  
+- 21:05 Sendgrid is now working on NestJS
+- 
 
 
 

@@ -1,8 +1,23 @@
+### POST auth/password-reset: 20:19 thru SENDGRID 
+POST http://localhost:8080/auth/password-reset
+Content-Type: application/json
+
+{
+  "email": "baliwme2014@gmail.com"
+}
+
+
+### SENDGRID API TEST : 18:60
+POST https://api.sendgrid.com/v3/mail/send
+Authorization: Bearer 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
+Content-Type: application/json
+
+{"personalizations": [{"to": [{"email": "baliwme2014@gmail.com"}]}],"from": {"email": "biboyatienza@gmail.com"},"subject": "Hello2, World! SENDGRID","content": [{"type": "text/plain", "value": "Howdy!"}]}'
+
 ### GET auth/: 16:46, Show the ADMIN PAGE 
 GET  http://localhost:8080/auth/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMyMDkzNTksImV4cCI6MTY1MzIxMDI1OX0.nEzfvumlCp81uzm8WF0PCMn_shh2cS7oAMSfPcNn0H4
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMyMDk3MzksImV4cCI6MTY1MzIxMDYzOX0.Hyi8vGiJJK8SqAj9UVHqMwoxFGWTn9J8Q_s8td0nz8A
 
 ### POST auth/login: 15:54, using new password 
 POST http://localhost:8080/auth/login
@@ -18,8 +33,8 @@ POST http://localhost:8080/auth/password-new
 Content-Type: application/json
 
 {
-  "password_reset_token": "$2b$10$RqPMN7hWzk.M3knITzpI9.ayrW/VBdHrI8RzVk1xMIWEGj6EW7LCu",
-  "new_password": "Password1!"
+  "password_reset_token": "$2b$10$i.nhg90.XcOdn01l08Lw9eVWKlw99rh/kLRc3I5DnnzZ9WQjQHBlG",
+  "new_password": "Password2!"
 }
 
 
@@ -29,7 +44,7 @@ POST http://localhost:8080/auth/password-reset
 Content-Type: application/json
 
 {
-  "email": "email03@gmail.com"
+  "email": "baliwme2014@gmail.com"
 }
 
 
@@ -40,7 +55,7 @@ Content-Type: application/json
 
 {
   "email": "email03@gmail.com",
-  "password": "P@ssword!"
+  "password": "Password2!"
 }
 
 ### POST local/register: 
@@ -59,8 +74,8 @@ POST http://localhost:8080/auth/register
 Content-Type: application/json
 
 {
-  "email": "email05@gmail.com",
-  "password": "P@ssword!",
+  "email": "baliwme2014@gmail.com",
+  "password": "Password1!",
   "role": "USER"
 }
 
