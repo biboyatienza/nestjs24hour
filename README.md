@@ -103,9 +103,11 @@ $ npm run test:cov
 - 19:08 Dinner Break
 - 20:09 Resume, Sendgrid not ending email :(
   - https://jsonlint.com/
-  
 - 21:05 Sendgrid is now working on NestJS
-- 
+- 21:21 Start working with images, 8hrs to go :(
+- 21:30 https://stackoverflow.com/questions/54958244/how-to-use-query-parameters-in-nest-js
+- 23:56 Image service
+- 01:09 https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined
 
 
 

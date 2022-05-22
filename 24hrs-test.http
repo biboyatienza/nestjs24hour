@@ -1,3 +1,22 @@
+### GET images/:id: 22:06, Show image with :id 
+GET  http://localhost:8080/images/19
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMyMjg0NzQsImV4cCI6MTY1MzIyOTM3NH0.4oFPC4pHqPJ0wcIoGrVuDv-VDPrbMPOs2lZYbppEbX8
+
+
+### Pexel API Call: 21:56
+GET https://api.pexels.com/v1/search?query=people
+Authorization: 563492ad6f9170000100000143b1404b9f7e475d8c8831687a2e36a9
+
+
+
+### GET images/: 21:33, Show images, max 10 
+GET  http://localhost:8080/images?limit=9
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMyMjY2OTIsImV4cCI6MTY1MzIyNzU5Mn0._paZGDvU2PbkzUtPTCvo_0veuufKY7DdW4vC__6QpwA
+
+
+
 ### POST auth/password-reset: 20:19 thru SENDGRID 
 POST http://localhost:8080/auth/password-reset
 Content-Type: application/json

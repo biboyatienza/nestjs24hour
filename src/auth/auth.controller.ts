@@ -8,7 +8,7 @@ import { Token } from './types';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {
+  constructor(private readonly authService: AuthService) {
   }
 
   @Get()
