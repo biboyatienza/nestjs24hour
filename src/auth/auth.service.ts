@@ -113,7 +113,7 @@ async passwordNewLocal(dto: PasswordNewDto): Promise<Token> {
     },
     data: {
       passwordHash: hashNewPassword,
-      passwordResetToken: '',
+      passwordResetToken: null,
       updatedAt: new Date()
     },
   });

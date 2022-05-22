@@ -1,3 +1,9 @@
+### GET auth/: 16:46, Show the ADMIN PAGE 
+GET  http://localhost:8080/auth/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMyMDkzNTksImV4cCI6MTY1MzIxMDI1OX0.nEzfvumlCp81uzm8WF0PCMn_shh2cS7oAMSfPcNn0H4
+
+
 ### POST auth/login: 15:54, using new password 
 POST http://localhost:8080/auth/login
 Content-Type: application/json
@@ -12,7 +18,7 @@ POST http://localhost:8080/auth/password-new
 Content-Type: application/json
 
 {
-  "password_reset_token": "$2b$10$IOeoce5ApYJxDmm/sDOaF.Uj83oUFzAXfpfxuMgjBgRuCbP1eOkKK",
+  "password_reset_token": "$2b$10$RqPMN7hWzk.M3knITzpI9.ayrW/VBdHrI8RzVk1xMIWEGj6EW7LCu",
   "new_password": "Password1!"
 }
 
@@ -53,7 +59,7 @@ POST http://localhost:8080/auth/register
 Content-Type: application/json
 
 {
-  "email": "email03@gmail.com",
+  "email": "email05@gmail.com",
   "password": "P@ssword!",
   "role": "USER"
 }

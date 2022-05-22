@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { PasswordResetDto, RegisterDto } from './dtos';
@@ -9,6 +9,13 @@ import { Token } from './types';
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {
+  }
+
+  @Get()
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(AuthGuard('jwt'))
+  showAdminPage(): string {
+    return "This is the PROTECTED ADMIN PAGE, login is required to see this.";
   }
 
   @Post('register')

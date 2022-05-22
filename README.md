@@ -92,7 +92,10 @@ $ npm run test:cov
 - 14:23 Resume
 - 15:58 Working Password reset & new route, just need other service for email
 - 16:38 Applied enum RBAC
- 
+- 16:57 Create a protected route => http://localhost:8080/auth/
+  - Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiZW1haWwwM0BnbWFpbC5jb20iLCJpYXQiOjE2NTMyMDk3MzksImV4cCI6MTY1MzIxMDYzOX0.Hyi8vGiJJK8SqAj9UVHqMwoxFGWTn9J8Q_s8td0nz8A
+
+
 
 
 ## TODO:
