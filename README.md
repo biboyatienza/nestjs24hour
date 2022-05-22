@@ -62,6 +62,10 @@ $ npm run test:cov
 - https://www.prisma.io/docs/concepts/components/prisma-schema/data-model
 - https://www.pexels.com/api/documentation/#authorization
 - pxls => 563492ad6f9170000100000143b1404b9f7e475d8c8831687a2e36a9
+- 08:46 https://docs.nestjs.com/recipes/prisma#set-up-prisma
+- 09:53 issue with ip address of PG on PgAdmin
+  - Resolution: https://www.youtube.com/watch?v=3nIc5GNmh98 
+  - $ docker inspect 207bb054e117
 
 ## Support
 
